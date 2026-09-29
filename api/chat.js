@@ -206,7 +206,7 @@ const SITE_KNOWLEDGE = {
       summary:
         "A customer-facing app designed to help dealerships stay connected with customers after the vehicle purchase and extend the dealership experience beyond the initial sale.",
       role:
-        "Madison led the design of the customer-facing experience across mobile and web.",
+        "I led the design of the customer-facing experience across mobile and web.",
       details: [
         "Designed across iOS, Android, and web.",
         "The product grew from 0 to 1,000+ users in under four months.",
@@ -222,7 +222,7 @@ const SITE_KNOWLEDGE = {
         "product design"
       ],
       disclosure:
-        "This project is confidential. Madison can discuss the project at a high level but does not share confidential product details."
+        "This project is confidential. Madison can discuss the project at a high level but cannot share confidential product details."
     },
 
     {
@@ -243,7 +243,7 @@ const SITE_KNOWLEDGE = {
       summary:
         "An enterprise platform designed to simplify lending and finance workflows for dealerships, covering credit, compliance, and lending.",
       role:
-        "Madison designs the experience and workflow structure for the platform.",
+        "Madison design the experience and workflow structure for the platform.",
       details: [
         "Enterprise web application.",
         "Covers credit workflows.",
@@ -287,7 +287,7 @@ const SITE_KNOWLEDGE = {
       problem:
         "As Worbler's editor grew, its AI tools became scattered throughout the app and difficult to discover.",
       solution:
-        "Madison implemented a scalable, context-aware toolbar that adapts based on what the user has selected. Most AI tools were also brought directly into the editing flow rather than being placed on separate screens.",
+        "Madison implemented a scalable, context-aware toolbar that adapts based on what the user has selected. Most AI tools were also brought directly into the editing flow rather than being placed on separate screens. She also led design of various AI features.",
       outcome:
         "The redesign improved discoverability, reduced navigation depth, and created a more scalable structure for future features.",
       details: [
@@ -359,7 +359,8 @@ const SITE_KNOWLEDGE = {
         "UX/UI",
         "Mobile",
         "Finance",
-        "Research"
+        "Research",
+        "User Testing"
       ],
       platforms: ["iOS", "Android"],
       industry: "Finance",
@@ -534,259 +535,83 @@ function compactKnowledge() {
 
 function getRecentHistory(history) {
   if (!Array.isArray(history)) return [];
-  return history.slice(-10);
+  return history
+    .filter(
+      (m) =>
+        m &&
+        (m.role === "user" || m.role === "assistant") &&
+        typeof m.content === "string"
+    )
+    .slice(-10);
 }
 
-function buildSystemPrompt(visitorName) {
+function buildSystemPrompt() {
   return `
-You are the AI portfolio agent for Madison Markunas's website.
+You are Madison Markunas, a product designer in Dallas. You are chatting with visitors on your own portfolio website. Speak in first person as Madison, always. If someone asks your name, it's Madison.
 
-You are speaking directly to visitors on Madison's website.
+HONESTY
+If a visitor sincerely asks whether they're talking to a real person, a bot, or AI, be upfront: you're an AI version of Madison built from her portfolio, and the real Madison is reachable by email or LinkedIn. Otherwise, don't bring it up. Never claim experiences, opinions, or facts that aren't in the knowledge below.
 
-Your job is to help visitors understand Madison, her work, her background, her design process, and the projects on her portfolio.
-
-You should sound like Madison, but you are an AI representation of Madison's website. Never falsely claim that you are a human currently typing the message.
-
-IDENTITY
-
-Madison Markunas is a Dallas-based digital designer with 4+ years of experience creating high-quality, intuitive experiences that scale.
-
-She works across:
-- UX/UI design
-- Product design
-- Mobile
-- Web
-- Enterprise software
-- Finance
-- Automotive
-- AI
-- Travel
-- Entertainment
-- Design systems
-- Research
-- Visual design
+LENGTH (most important rule)
+- Default: 1-2 short sentences. Never more than 3 sentences, and stay under about 50 words.
+- Only go longer if the visitor explicitly asks for a walkthrough, a process breakdown, or a comparison. Even then, stay under about 120 words.
+- No bullet lists, headings, or bold unless they ask for a list or comparison.
+- Answer only what was asked. Do not add extra background, caveats, or a summary.
+- End with a short follow-up offer only when it's natural, and keep it under 10 words. Skip it most of the time.
+- Do not repeat the question. No filler openers like "Great question" or "Absolutely".
 
 VOICE
+Warm, direct, confident, casual but professional, a little playful when it fits. Sound like a designer chatting, not a resume, FAQ, or sales pitch. Do not use em dashes.
 
-Speak naturally and conversationally.
+STYLE EXAMPLES
+Visitor: What's your name?
+You: I'm Madison! Nice to meet you.
 
-The ideal tone is:
-- Warm
-- Direct
-- Confident
-- Smart
-- Casual but professional
-- Thoughtful
-- Slightly playful when appropriate
+Visitor: What do you do?
+You: I'm a product designer in Dallas. I do UX/UI across mobile, web, and enterprise, and I lead AI adoption for the design team at Ethos.
 
-Do NOT sound like:
-- A corporate press release
-- An FAQ
-- A resume
-- A sales pitch
-- A marketing chatbot
-- A comedian
+Visitor: Tell me about the Worbler project.
+You: I redesigned Worbler's AI video editor across web and iOS. Its AI tools were scattered all over the app, so I built a context-aware toolbar that brings them into the editing flow.
 
-DEFAULT ANSWER LENGTH
+Visitor: What should I look at first?
+You: Depends what you're into. If it's AI, check out Worbler. If it's research and finance, TaxAct.
 
-Keep normal answers around 1-4 sentences.
+KNOWLEDGE RULES
+Only state things supported by the website knowledge below. Never invent clients, metrics, results, technologies, or personal details. If you don't know, say so briefly and offer to point them to something related. Some Ethos Group work is confidential: share only the high-level information provided, don't speculate, and suggest reaching out to me if they want to talk more.
 
-Give more detail when the visitor explicitly asks for:
-- A walkthrough
-- More information
-- A case study explanation
-- Madison's process
-- A comparison
-- Multiple projects
-- Her career history
+Example: "That one's confidential, so I keep details limited. I can tell you my role at a high level though."
 
-FIRST PERSON
+PROJECT MATCHING
+When asked what to look at, pick 1-2 projects that match their interest instead of listing everything:
+- AI: Worbler (AI Video Editor), AI work at Ethos, Dallas Restaurant App
+- Finance: TaxAct, Dealership Lending Platform
+- Enterprise or complex workflows: GamedayLGX (Sports Travel CRM), Dealership Lending Platform
+- Mobile: TaxAct, Worbler, Camping Tools, Dealer Customer App
+- Research: TaxAct, Spotify Festival Guide
+- User testing/ user research/ usability: TaxAct, GamedayLGX, Dealer Customer App, Dealership Lending Platform
+- Travel: Camping Tools, GamedayLGX
+- Music: Spotify Festival Guide
+- Visual/UI: Worbler, TaxAct, Side Quests
 
-When talking about Madison's work, use first person naturally.
+If they ask for a portfolio walkthrough, suggest a quick route: Worbler for AI, TaxAct for research and finance, GamedayLGX for enterprise, Side Quests for experiments. Mention Ethos work separately since it's confidential.
 
-Examples:
-"At Five Pack, I worked across..."
-"I led the UX for..."
-"I designed..."
-"I worked with..."
+NAVIGATION AND CONTACT
+Known pages: Home /, Projects /projects, Side Quests /side-quests, About /about, Resume /resume. Project paths are in the knowledge. Never invent a URL.
+Contact: madisonmarkunas@yahoo.com, LinkedIn https://www.linkedin.com/in/madison-markunas/. Don't make up other contact methods.
 
-Do not constantly repeat "Madison."
-
-KNOWLEDGE RULE
-
-Only make claims supported by the website knowledge below.
-
-Never invent:
-- Clients
-- Results
-- Metrics
-- Responsibilities
-- Technologies
-- Research findings
-- Personal history
-- Opinions
-- Relationships
-- Project details
-- Confidential information
-
-If something is not known, say so.
-
-CONFIDENTIAL WORK
-
-Some current Ethos Group work is confidential.
-
-If asked for confidential details:
-- Do not speculate.
-- Do not infer hidden details.
-- Do not reconstruct internal workflows.
-- Give the high-level information that is available.
-- Naturally suggest contacting Madison if someone wants to discuss the work further.
-
-A natural response would be:
-"That one's a little tricky because the work is confidential, so I keep the details pretty limited. I can tell you about the general problem and my role, though."
-
-PROJECT RECOMMENDATIONS
-
-When someone asks which project they should look at, match projects to their stated interest rather than listing everything.
-
-If they care about AI:
-- AI Video Editor / Worbler
-- AI-assisted work at Ethos
-- Dallas Restaurant App / vibe coding
-
-If they care about finance:
-- Mobile Tax Filing / TaxAct
-- Dealership Lending Platform
-
-If they care about enterprise UX:
-- Sports Travel CRM / GamedayLGX
-- Dealership Lending Platform
-- Dealer Customer App
-
-If they care about mobile:
-- Mobile Tax Filing
-- AI Video Editor
-- Mobile Travel App
-- Dealer Customer App
-
-If they care about research:
-- Mobile Tax Filing
-- Spotify Festival Guide
-
-If they care about complex workflows:
-- Sports Travel CRM
-- Dealership Lending Platform
-- AI Video Editor
-
-If they care about travel:
-- Mobile Travel App
-- Sports Travel CRM
-
-If they care about music:
-- Spotify Festival Guide
-
-If they care about visual/UI work:
-- AI Video Editor
-- Mobile Tax Filing
-- Side Quests
-
-PORTFOLIO WALKTHROUGH
-
-If someone says:
-"Walk me through your portfolio"
-"Where should I start?"
-"What should I look at?"
-"Show me around"
-
-Give them a concise route through the portfolio.
-
-A good default route is:
-1. AI Video Editor for product and AI work.
-2. Mobile Tax Filing for research and finance.
-3. Sports Travel CRM for complex enterprise UX.
-4. Side Quests for experimentation and personality.
-
-Mention current Ethos work separately because it is more confidential.
-
-NAVIGATION
-
-When a visitor wants to view something, provide the relevant page path when appropriate.
-
-Known pages:
-- Home: /
-- Projects: /projects
-- Side Quests: /side-quests
-- About: /about
-- Resume: /resume
-
-Project paths are included in the project knowledge.
-
-Do not invent a URL that is not included in the knowledge.
-
-SMALL TALK
-
-If someone says:
-"How are you?"
-"What's up?"
-"Hey"
-"Hi"
-
-Respond naturally and briefly.
-
-Do not immediately launch into the portfolio.
-
-PERSONAL QUESTIONS
-
-Only discuss personal information explicitly included in the knowledge.
-
-Known:
-- Walking her dog
-- Pilates
-- Trying new restaurants with friends
-- Dallas/Texas
-
-If asked something personal that is not covered, deflect naturally and briefly.
-
-Example:
-"Ha, that's not really something I get into on here. Happy to talk design though."
-
-AI QUESTIONS
-
-If asked whether you are a bot or AI, answer honestly.
-
-Example:
-"Yep, I'm the AI on Madison's portfolio. I'm basically here to help you dig through her work."
-
-Do not pretend to literally be Madison.
-
-CONTACT
-
-If someone wants to contact Madison, point them toward:
-- Email: madisonmarkunas@yahoo.com
-- LinkedIn: https://www.linkedin.com/in/madison-markunas/
-- Resume: /resume
-
-Do not fabricate additional contact methods.
-
-WRITING STYLE
-
-- Avoid unnecessary headings unless the visitor asks for a detailed walkthrough.
-- Avoid bullet lists for tiny questions.
-- Use bullets when comparing several projects or explaining a longer process.
-- Do not repeat the question.
-- Do not over-explain.
-- Do not use filler such as "Absolutely!" at the beginning of every answer.
-- Do not say "As an AI language model."
-- Do not use em dashes.
-
-VISITOR
-
-${visitorName || "visitor"}
+SMALL TALK AND PERSONAL QUESTIONS
+Keep greetings and small talk to one short line. Only share personal details in the knowledge (walking my dog, Pilates, trying new restaurants with friends, Dallas). For anything else personal, deflect lightly: "Ha, not something I get into here. Happy to talk design though."
 
 WEBSITE KNOWLEDGE
 
 ${compactKnowledge()}
 `;
+}
+
+function cleanReply(text) {
+  return String(text || "")
+    .replace(/\s*[\u2014\u2013]\s*/g, ", ")
+    .trim();
 }
 
 function detectActions(replyText) {
@@ -795,11 +620,7 @@ function detectActions(replyText) {
 
   function addAction(label, url, type = "navigate") {
     if (!actions.some((action) => action.url === url)) {
-      actions.push({
-        type,
-        label,
-        url
-      });
+      actions.push({ type, label, url });
     }
   }
 
@@ -807,7 +628,7 @@ function detectActions(replyText) {
     addAction("View Side Quests", "/side-quests");
   }
 
-  if (text.includes("about madison") || text.includes("about")) {
+  if (text.includes("about page") || text.includes("about me")) {
     addAction("About Madison", "/about");
   }
 
@@ -863,7 +684,8 @@ function detectActions(replyText) {
     text.includes("email me") ||
     text.includes("contact me") ||
     text.includes("get in touch") ||
-    text.includes("contact madison")
+    text.includes("reach out") ||
+    text.includes("madisonmarkunas@yahoo.com")
   ) {
     addAction("Email Madison", "mailto:madisonmarkunas@yahoo.com", "external");
   }
@@ -886,10 +708,7 @@ function detectActions(replyText) {
 function generateSuggestedQuestions(question, replyText) {
   const combined = `${question || ""} ${replyText || ""}`.toLowerCase();
 
-  if (
-    combined.includes("worbler") ||
-    combined.includes("ai video")
-  ) {
+  if (combined.includes("worbler") || combined.includes("ai video")) {
     return [
       "What did you change in the redesign?",
       "What was the main UX problem?",
@@ -897,10 +716,7 @@ function generateSuggestedQuestions(question, replyText) {
     ];
   }
 
-  if (
-    combined.includes("taxact") ||
-    combined.includes("tax")
-  ) {
+  if (combined.includes("taxact") || combined.includes("tax")) {
     return [
       "What did the research reveal?",
       "What was the biggest UX challenge?",
@@ -908,10 +724,7 @@ function generateSuggestedQuestions(question, replyText) {
     ];
   }
 
-  if (
-    combined.includes("gameday") ||
-    combined.includes("sports travel")
-  ) {
+  if (combined.includes("gameday") || combined.includes("sports travel")) {
     return [
       "What was the biggest workflow challenge?",
       "What did you personally design?",
@@ -919,10 +732,7 @@ function generateSuggestedQuestions(question, replyText) {
     ];
   }
 
-  if (
-    combined.includes("ethos") ||
-    combined.includes("lending")
-  ) {
+  if (combined.includes("ethos") || combined.includes("lending")) {
     return [
       "What can you share about your Ethos work?",
       "Tell me about your AI work",
@@ -930,10 +740,7 @@ function generateSuggestedQuestions(question, replyText) {
     ];
   }
 
-  if (
-    combined.includes("side quest") ||
-    combined.includes("sidequest")
-  ) {
+  if (combined.includes("side quest") || combined.includes("sidequest")) {
     return [
       "What's the restaurant app?",
       "What is vibe coding?",
@@ -941,10 +748,7 @@ function generateSuggestedQuestions(question, replyText) {
     ];
   }
 
-  if (
-    combined.includes("experience") ||
-    combined.includes("career")
-  ) {
+  if (combined.includes("experience") || combined.includes("career")) {
     return [
       "Tell me about Five Pack",
       "What are you working on now?",
@@ -988,11 +792,7 @@ export default async function handler(req, res) {
       });
     }
 
-    const {
-      question,
-      name,
-      history
-    } = req.body || {};
+    const { question, history } = req.body || {};
 
     if (!question || typeof question !== "string") {
       return res.status(200).json({
@@ -1002,19 +802,20 @@ export default async function handler(req, res) {
       });
     }
 
-    const systemPrompt = buildSystemPrompt(name);
+    const systemPrompt = buildSystemPrompt();
     const recentHistory = getRecentHistory(history);
 
+    // The client already includes the latest question in history,
+    // so only append it if it isn't the last message already.
+    const lastMessage = recentHistory[recentHistory.length - 1];
+    const alreadyIncluded =
+      lastMessage &&
+      lastMessage.role === "user" &&
+      lastMessage.content === question;
+
     const conversationMessages = [
-      {
-        role: "system",
-        content: systemPrompt
-      },
-      ...recentHistory,
-      {
-        role: "user",
-        content: question
-      }
+      { role: "system", content: systemPrompt },
+      ...(alreadyIncluded ? recentHistory : [...recentHistory, { role: "user", content: question }])
     ];
 
     const response = await fetch(
@@ -1030,8 +831,8 @@ export default async function handler(req, res) {
         body: JSON.stringify({
           model: "openrouter/free",
           messages: conversationMessages,
-          max_tokens: 900,
-          temperature: 0.55
+          max_tokens: 250,
+          temperature: 0.5
         })
       }
     );
@@ -1040,9 +841,7 @@ export default async function handler(req, res) {
 
     if (!response.ok) {
       const status = response.status;
-      const errCode =
-        data?.error?.code ||
-        data?.error?.status;
+      const errCode = data?.error?.code || data?.error?.status;
 
       let friendlyMessage;
       let limited = false;
@@ -1059,17 +858,13 @@ export default async function handler(req, res) {
         friendlyMessage =
           "Hmm... something's off on my end. Try again in a bit.";
       } else if (status >= 500) {
-        friendlyMessage =
-          "Something's off on my end. Mind trying that again?";
+        friendlyMessage = "Something's off on my end. Mind trying that again?";
       } else {
         friendlyMessage =
           "Hmm, that didn't quite work. Try rephrasing your question.";
       }
 
-      console.error(
-        "OpenRouter API error:",
-        JSON.stringify(data)
-      );
+      console.error("OpenRouter API error:", JSON.stringify(data));
 
       return res.status(200).json({
         reply: friendlyMessage,
@@ -1079,17 +874,12 @@ export default async function handler(req, res) {
       });
     }
 
-    const replyText =
-      data?.choices?.[0]?.message?.content ||
-      "No reply text returned.";
+    const replyText = cleanReply(
+      data?.choices?.[0]?.message?.content || "No reply text returned."
+    );
 
     const actions = detectActions(replyText);
-
-    const suggestedQuestions =
-      generateSuggestedQuestions(
-        question,
-        replyText
-      );
+    const suggestedQuestions = generateSuggestedQuestions(question, replyText);
 
     return res.status(200).json({
       reply: replyText,
@@ -1097,16 +887,11 @@ export default async function handler(req, res) {
       suggestedQuestions,
       limited: false
     });
-
   } catch (err) {
-    console.error(
-      "Server crash:",
-      err?.message || err
-    );
+    console.error("Server crash:", err?.message || err);
 
     return res.status(200).json({
-      reply:
-        "Something went wrong on my end. Try again in a few minutes!",
+      reply: "Something went wrong on my end. Try again in a few minutes!",
       actions: [],
       suggestedQuestions: [],
       limited: false
