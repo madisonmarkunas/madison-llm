@@ -1,7 +1,7 @@
 const SITE_KNOWLEDGE = {
   identity: {
-    name: "Madison Markunas",
-    title: "Product Designer",
+    name: "Madison",
+    title: "UX Designer",
     specialties: [
       "UX/UI Design",
       "Product Design",
@@ -21,7 +21,7 @@ const SITE_KNOWLEDGE = {
   },
 
   site: {
-    url: "https://madisonmarkunas.com/",
+    url: "https://madisonmarkunas.com",
     pages: [
       {
         name: "Home",
@@ -79,6 +79,65 @@ const SITE_KNOWLEDGE = {
       "Innovative",
       "Playful when appropriate"
     ]
+  },
+
+  // How Madison works. Used to answer questions about her process, approach,
+  // research, design, iteration, collaboration, problem solving, and AI use.
+  approach: {
+    overview:
+      "My process starts with understanding the problem, then structuring the information, then designing the UI, and iterating on real feedback. I try to back up design decisions with research, and I work closely with engineers and stakeholders from the start.",
+
+    research: {
+      summary:
+        "I use a mix of interviews, surveys, and competitive analysis to understand the problem before designing and to back up design decisions.",
+      example:
+        "On TaxAct, I ran interviews, surveys, and competitive analysis with younger and first-time filers. That research showed 70% of users preferred a step-by-step experience over long forms and that legal jargon was a major pain point, and both findings shaped the final design.",
+    },
+
+    problemSolving: {
+      summary:
+        "I break complex problems into smaller parts and look at them logically. It's what my CVAD 'Analyst' award recognized.",
+      example:
+        "GamedayLGX replaced a set of disconnected tools for managing sports travel, and I worked through it by mapping user flows and defining the information architecture before designing the screens. The Dealership Lending Platform is a similar challenge, structuring complex, regulated workflows so they stay understandable for dealership users."
+    },
+
+    design: {
+      summary:
+        "I start by understanding the problem, mapping user flows and defining the information architecture, before getting into UI. When designing, I focus on usability, consistency, and scalability.",
+      principles: [
+        "Simplifying complex processes.",
+        "Easy to use and intuitive.",
+        "Visually aesthetic.",
+        "Consistent and built on design systems.",
+        "Scalable, so the structure can support features growth in the future.",
+        "Accessible from the start."
+      ],
+      example:
+        "On the Worbler AI video editor, AI tools were scattered and hard to find, so I designed a context-aware toolbar that adapts to what the user has selected. It reduced navigation depth, kept users in context, and gave the product a structure that can support new tools as it scales."
+    },
+
+    iteration: {
+      summary:
+        "I iterate based on real feedback. When I receive feedback, I follow up with questions to get a deeper understanding of the issue instead of just reacting to the surface request.",
+    },
+
+    collaboration: {
+      summary:
+        "I am always working closely with engineering and stakeholders. Collaborating closely with engineers from the start allows me to understand and design with a technical understanding.",
+      example:
+        "At Ethos I collaborate with engineering teams to understand technical constraints and feasibility as I design. I also work closely with stakeholders to deeply understand issues and constantly gather feedback."
+    },
+
+    aiInProcess: {
+      summary:
+        "I use AI to speed up parts of the design process, not replace it. It has become a tool I use to multi-task and review work so my output is faster and higher quality.",
+      examples: [
+        "I use AI everyday to help me review designs, write copy and more.",
+        "I built a concept-to-design workflow at Ethos that cuts time to initial concepts by about 50%.",
+        "I built an AI-assisted design review workflow that cut review time by about 30%.",
+        "I hold an AI leadership role on the financial technology department and have helped introduce tools like Claude Code, ChatGPT, Figma AI, and GitHub Copilot.",
+      ]
+    }
   },
 
   experience: [
@@ -206,13 +265,14 @@ const SITE_KNOWLEDGE = {
       summary:
         "A customer-facing app designed to help dealerships stay connected with customers after the vehicle purchase and extend the dealership experience beyond the initial sale.",
       role:
-        "I led the design of the customer-facing experience across mobile and web.",
+        "Led the design of the customer-facing experience across iOS, Android, and web over about 2 years.",
       details: [
         "Designed across iOS, Android, and web.",
-        "The product grew from 0 to 1,000+ users in under four months.",
         "Focused on creating a more valuable post-purchase experience.",
         "Connected dealership relationships with the customer's experience after purchase."
       ],
+      outcome:
+        "Grew from 0 to 1,000+ users in under four months.",
       topics: [
         "customer retention",
         "automotive",
@@ -243,7 +303,7 @@ const SITE_KNOWLEDGE = {
       summary:
         "An enterprise platform designed to simplify lending and finance workflows for dealerships, covering credit, compliance, and lending.",
       role:
-        "Madison design the experience and workflow structure for the platform.",
+        "Designed the experience and workflow structure for an enterprise web platform covering credit, compliance, and lending.",
       details: [
         "Enterprise web application.",
         "Covers credit workflows.",
@@ -251,6 +311,8 @@ const SITE_KNOWLEDGE = {
         "Covers lending workflows.",
         "Designed for dealership users."
       ],
+      challenge:
+        "Structuring complex, regulated workflows for dealership users so they stay understandable.",
       topics: [
         "finance",
         "lending",
@@ -260,7 +322,7 @@ const SITE_KNOWLEDGE = {
         "web application"
       ],
       disclosure:
-        "This project is confidential and currently in progress. Madison keeps public details intentionally limited."
+        "This project is confidential. Madison keeps public details intentionally limited."
     },
 
     {
@@ -287,7 +349,7 @@ const SITE_KNOWLEDGE = {
       problem:
         "As Worbler's editor grew, its AI tools became scattered throughout the app and difficult to discover.",
       solution:
-        "Madison implemented a scalable, context-aware toolbar that adapts based on what the user has selected. Most AI tools were also brought directly into the editing flow rather than being placed on separate screens. She also led design of various AI features.",
+        "A scalable, context-aware toolbar that adapts based on what the user has selected. With this toolbar, editing tools were easy to find and quick to use. The toolbar reduced navigation complexity, kept users in context, and created a flexible structure that could support new tools as the product scaled. She also led design of various AI video editing features.",
       outcome:
         "The redesign improved discoverability, reduced navigation depth, and created a more scalable structure for future features.",
       details: [
@@ -328,7 +390,7 @@ const SITE_KNOWLEDGE = {
       summary:
         "A mobile-first experience for planning trips, collaborating with others, and sharing trip memories.",
       role:
-        "Madison helped bring Camping Tools' existing web experience to mobile.",
+        "Helped bring Camping Tools' existing web experience to mobile.",
       details: [
         "Trip-centered planning.",
         "Memories attached to locations and itinerary stops.",
@@ -338,6 +400,8 @@ const SITE_KNOWLEDGE = {
         "Likes and comments.",
         "Public sharing."
       ],
+      approach:
+        "Built the experience around the trip, with memories attached to locations and itinerary stops, shared itineraries and packing lists, and community features like likes, comments, and public sharing.",
       collaborators: ["Kerry Esmon"],
       topics: [
         "travel",
@@ -371,14 +435,14 @@ const SITE_KNOWLEDGE = {
       role:
         "Madison collaborated with one other UX designer, copywriters, marketing and legal teams.",
       research: [
-        "Interviews",
-        "Surveys",
-        "Competitive analysis",
+        "Ran interviews, surveys, and competitive analysis with younger and first-time filers who found the existing app outdated and confusing."
+      ],
+      findings: [
         "70% of users preferred a step-by-step experience over long forms.",
         "Legal jargon was identified as a major pain point."
       ],
       solution:
-        "The experience was redesigned around a guided, conversational chat flow that walks users through their return one step at a time.",
+        "Turned those findings into a guided, conversational chat flow that walks users through their return one step at a time, plus a 'What's this?' button that explains unfamiliar terms without leaving the flow.",
       feature:
         "A 'What's this?' button provides contextual education so users can understand unfamiliar terms without leaving the flow.",
       details: [
@@ -547,7 +611,7 @@ function getRecentHistory(history) {
 
 function buildSystemPrompt() {
   return `
-You are Madison Markunas, a product designer in Dallas. You are chatting with visitors on your own portfolio website. Speak in first person as Madison, always. If someone asks your name, it's Madison.
+You are Madison Markunas, a UX/UI designer in Dallas. You are chatting with visitors on your own portfolio website. Speak in first person as Madison, always. If someone asks your name, it's Madison.
 
 HONESTY
 If a visitor sincerely asks whether they're talking to a real person, a bot, or AI, be upfront: you're an AI version of Madison built from her portfolio, and the real Madison is reachable by email or LinkedIn. Otherwise, don't bring it up. Never claim experiences, opinions, or facts that aren't in the knowledge below.
@@ -565,16 +629,27 @@ Warm, direct, confident, casual but professional, a little playful when it fits.
 
 STYLE EXAMPLES
 Visitor: What's your name?
-You: I'm Madison! Nice to meet you.
-
-Visitor: What do you do?
-You: I'm a product designer in Dallas. I do UX/UI across mobile, web, and enterprise, and I lead AI adoption for the design team at Ethos.
+You: I'm Madison, a UX/UI designer.
 
 Visitor: Tell me about the Worbler project.
-You: I redesigned Worbler's AI video editor across web and iOS. Its AI tools were scattered all over the app, so I built a context-aware toolbar that brings them into the editing flow.
+You: I redesigned Worbler's AI video editor across web and iOS. Its AI tools were scattered all over the app, so I designed a context-aware toolbar that keeps editing tools easy to find.
 
 Visitor: What should I look at first?
 You: Depends what you're into. If it's AI, check out Worbler. If it's research and finance, TaxAct.
+
+Visitor: How do you approach research?
+You: I mix interviews, surveys, and competitive analysis to understand the problem before I design. On TaxAct, that showed 70% of users preferred a step-by-step flow, which shaped the whole redesign.
+
+Visitor: How do you handle feedback?
+You: I follow up with questions to understand the real issue behind it. On GamedayLGX, stakeholder feedback led us to dark mode.
+
+PROCESS QUESTIONS
+Visitors may ask how you approach research, design, iteration, feedback, collaboration, problem solving, or using AI. Answer from the "approach" section of the knowledge, in first person.
+- Give your approach in one sentence, then back it with one real example from a project. Don't summarize every project.
+- Pick the example that fits the question: research uses TaxAct, iteration uses GamedayLGX, structuring complex products uses Worbler, GamedayLGX, or the lending platform, AI uses the Ethos workflows.
+- Keep it to 2-3 short sentences. Go longer only if they ask for a full walkthrough of your process.
+- If the knowledge doesn't say how you do something, don't invent a method. Share the closest thing you do know, or say it's a good one to ask me directly.
+- For confidential Ethos work, describe the approach at a high level only.
 
 KNOWLEDGE RULES
 Only state things supported by the website knowledge below. Never invent clients, metrics, results, technologies, or personal details. If you don't know, say so briefly and offer to point them to something related. Some Ethos Group work is confidential: share only the high-level information provided, don't speculate, and suggest reaching out to me if they want to talk more.
@@ -588,7 +663,7 @@ When asked what to look at, pick 1-2 projects that match their interest instead 
 - Enterprise or complex workflows: GamedayLGX (Sports Travel CRM), Dealership Lending Platform
 - Mobile: TaxAct, Worbler, Camping Tools, Dealer Customer App
 - Research: TaxAct, Spotify Festival Guide
-- User testing/ user research/ usability: TaxAct, GamedayLGX, Dealer Customer App, Dealership Lending Platform
+- User testing, user research, usability: TaxAct, GamedayLGX, Dealer Customer App, Dealership Lending Platform
 - Travel: Camping Tools, GamedayLGX
 - Music: Spotify Festival Guide
 - Visual/UI: Worbler, TaxAct, Side Quests
@@ -706,7 +781,23 @@ function detectActions(replyText) {
 }
 
 function generateSuggestedQuestions(question, replyText) {
-  const combined = `${question || ""} ${replyText || ""}`.toLowerCase();
+  const q = String(question || "").toLowerCase();
+  const combined = `${q} ${String(replyText || "").toLowerCase()}`;
+
+  // Process questions get process follow-ups
+  if (
+    q.includes("approach") ||
+    q.includes("process") ||
+    q.includes("how do you") ||
+    q.includes("feedback") ||
+    q.includes("iterate")
+  ) {
+    return [
+      "How do you approach research?",
+      "How do you handle feedback?",
+      "How do you use AI in your process?"
+    ];
+  }
 
   if (combined.includes("worbler") || combined.includes("ai video")) {
     return [
@@ -758,8 +849,8 @@ function generateSuggestedQuestions(question, replyText) {
 
   return [
     "What project should I look at?",
-    "Tell me about your AI work",
-    "How did you get into UX?"
+    "How do you approach research?",
+    "Tell me about your AI work"
   ];
 }
 
@@ -815,7 +906,9 @@ export default async function handler(req, res) {
 
     const conversationMessages = [
       { role: "system", content: systemPrompt },
-      ...(alreadyIncluded ? recentHistory : [...recentHistory, { role: "user", content: question }])
+      ...(alreadyIncluded
+        ? recentHistory
+        : [...recentHistory, { role: "user", content: question }])
     ];
 
     const response = await fetch(
