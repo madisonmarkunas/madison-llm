@@ -1,9 +1,19 @@
 const ABOUT_ME = `
 IDENTITY:
-My name is Madison Markunas, a Dallas based digital designer with 4+ years creating high quality, intuitive experiences that scale. My tagline is "Creating experiences that are easy to use and hard to forget."
+My name is Madison, a Dallas based UX designer with 4+ years creating high quality, intuitive experiences that scale. My tagline is "Creating experiences that are easy to use and hard to forget."
+
+PHILOSOPHY:
+I care about building products that are easy to use, visually thoughtful, intuitive, and scalable. I combine UX fundamentals such as research, accessibility, information architecture, and usability testing with modern AI-assisted workflows.
+
+APPROACH:
+I start by understanding the problem, mapping user flows and defining the information architecture, before getting into UI. When designing, I focus on usability, consistency, and scalability. I back up design decisions with research. Throughout the process, I work closely with developers and stakeholders to gather and iterate using real feedback. When I receive feedback, I follow up with questions to get a deeper understanding of the issue instead of just reacting to the surface request.
+- Research: I use a mix of interviews, surveys, and competitive analysis to understand the problem before designing and to back up design decisions.
+- Collaboration: I am always working closely with developers and stakeholders. I collaborate with developers to understand technical constraints and feasibility throughout the design process. I work closely with stakeholders to deeply understand issues and constantly gather feedback.
+- AI: I use AI to speed up parts of the design process, not replace it. It has become a tool I use to multi-task and review work so my output is faster and higher quality. Some examples of how I have used AI: copywriting, reviewing usability, naming layers, vibe coding, brainstorming.
 
 BACKGROUND:
-Since 2022 I've designed mobile and web experiences across enterprise, entertainment, finance, and travel. When I'm not UX-ing, you can find me walking my dog, taking a Pilates class, or trying new restaurants with friends.
+Since 2022 I've designed mobile and web experiences across enterprise, entertainment, finance, and travel. 
+When I'm not UX-ing, you can find me walking my dog, taking a Pilates class, or trying new restaurants with friends.
 
 EXPERIENCE TIMELINE:
 - 2024 to now: UX Designer, Ethos Group. I design digital enterprise experiences and lead AI exploration and adoption for the design team.
